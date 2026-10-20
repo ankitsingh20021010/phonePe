@@ -1,6 +1,7 @@
-// Clearly labeled Phone pe data. Replace these objects with your own authorized data.
+// Clearly labeled PhonePe-style demo data.
+// Replace these objects only with your own authorized data.
 const transactions = [
-  // Phone pe ONLY: sample pair for the mock history UI.
+  // PhonePe ONLY: sample pair for the mock history UI.
   { month: "October 2026", label: "Credit card bill paid", name: "XXXXXXXXXXXX5619", amount: 18000, type: "debit", time: "4 hours ago", icon: "▤", iconType: "card", bank: "∞" },
   { month: "October 2026", label: "Received from", name: "TEEJAMAL GYANI LAL", amount: 18000, type: "credit", time: "4 hours ago", icon: "↙", bank: "∞" },
   { month: "October 2026", label: "Paid to", name: "Ankit Bhaiya", amount: 1, type: "debit", time: "4 hours ago", icon: "💻", iconType: "avatar", bank: "∞" },
@@ -24,58 +25,111 @@ function money(amount) {
 
 function render(items) {
   list.innerHTML = "";
+
   if (!items.length) {
-    list.innerHTML = '<div class="empty">No matching Phone pe transactions found.</div>';
+    list.innerHTML = '<div class="empty">No matching demo transactions found.</div>';
     return;
   }
 
   const month = document.createElement("div");
   month.className = "month-row";
-  month.innerHTML = `<span>October 2026</span><strong>Phone pe history　›</strong>`;
+  month.innerHTML = `<span>October 2026</span><strong>Demo history　›</strong>`;
   list.appendChild(month);
 
   items.forEach(tx => {
     const row = document.createElement("article");
     row.className = "transaction";
+
     const iconClass = tx.iconType ? `tx-icon ${tx.iconType}` : "tx-icon";
     const amountClass = tx.type === "credit" ? "tx-amount credit" : "tx-amount";
-    const amountText = tx.type === "credit" ? `+ ${money(tx.amount)}` : money(tx.amount);
-    row.innerHTML = `
-      <div class="${iconClass}">${tx.icon}</div>
-      <div class="tx-content">
-        <div class="tx-label">${tx.label}</div>
-        <div class="tx-name-row">
-          <div class="tx-name" title="${tx.name}">${tx.name}</div>
-          <div class="${amountClass}">${amountText}</div>
-        </div>
-        <div class="tx-meta">
-          <span>${tx.time}</span>
-          <span>${tx.type === "credit" ? "Credited to" : "Debited from"} <span class="bank-mark">${tx.bank}</span></span>
-        </div>
-      </div>`;
+    const amountText = tx.type === "credit"
+      ? `+ ${money(tx.amount)}`
+      : money(tx.amount);
+
+    // Use textContent for user-controlled strings to avoid injecting HTML.
+    const icon = document.createElement("div");
+    icon.className = iconClass;
+    icon.textContent = tx.icon;
+
+    const content = document.createElement("div");
+    content.className = "tx-content";
+
+    const label = document.createElement("div");
+    label.className = "tx-label";
+    label.textContent = tx.label;
+
+    const nameRow = document.createElement("div");
+    nameRow.className = "tx-name-row";
+
+    const name = document.createElement("div");
+    name.className = "tx-name";
+    name.title = tx.name;
+    name.textContent = tx.name;
+
+    const amount = document.createElement("div");
+    amount.className = amountClass;
+    amount.textContent = amountText;
+
+    const meta = document.createElement("div");
+    meta.className = "tx-meta";
+
+    const time = document.createElement("span");
+    time.textContent = tx.time;
+
+    const bankInfo = document.createElement("span");
+    bankInfo.append(
+      document.createTextNode(
+        `${tx.type === "credit" ? "Credited to" : "Debited from"} `
+      )
+    );
+
+    const bankMark = document.createElement("span");
+    bankMark.className = "bank-mark";
+    bankMark.textContent = tx.bank;
+    bankInfo.appendChild(bankMark);
+
+    nameRow.append(name, amount);
+    meta.append(time, bankInfo);
+    content.append(label, nameRow, meta);
+    row.append(icon, content);
     list.appendChild(row);
   });
 }
 
 searchInput.addEventListener("input", () => {
   const q = searchInput.value.trim().toLowerCase();
+
   render(transactions.filter(tx =>
-    `${tx.label} ${tx.name} ${tx.amount} ${tx.time}`.toLowerCase().includes(q)
+    `${tx.label} ${tx.name} ${tx.amount} ${tx.time}`
+      .toLowerCase()
+      .includes(q)
   ));
 });
 
 document.getElementById("filterBtn").addEventListener("click", () => {
   const credits = transactions.filter(tx => tx.type === "credit");
   const debits = transactions.filter(tx => tx.type === "debit");
-  const showCredits = confirm("OK = show received transactions only. Cancel = show paid transactions only.");
+
+  const showCredits = confirm(
+    "OK = show received demo transactions only. Cancel = show paid demo transactions only."
+  );
+
   render(showCredits ? credits : debits);
 });
 
 document.querySelectorAll(".nav-item, .scan").forEach(button => {
   button.addEventListener("click", () => {
-    if (button.dataset.tab === "History") render(transactions);
-    else alert(`${button.dataset.tab} is a Phone pe navigation item.`);
-    document.querySelectorAll(".nav-item").forEach(item => item.classList.toggle("active", item === button));
+    const tab = button.dataset.tab || button.textContent.trim();
+
+    if (tab === "History") {
+      render(transactions);
+    } else {
+      alert(`${tab} is a demo navigation item.`);
+    }
+
+    document.querySelectorAll(".nav-item").forEach(item => {
+      item.classList.toggle("active", item === button);
+    });
   });
 });
 

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Transaction History Phone pe</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="phone-page">
+    <header class="top">
+      <div class="status-bar">
+        <span>2:02</span>
+        <span class="status-icons">▰ Vo WiFi　▰ Vo WiFi　◉　▣ 60</span>
+      </div>
+      <div class="heading-row">
+        <h1>History</h1>
+        <button class="help" aria-label="Help">?</button>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">⌕</span>
+        <input id="searchInput" type="search" placeholder="Search" aria-label="Search transactions" />
+        <button id="filterBtn" class="filter-btn" aria-label="Filter transactions">☷</button>
+      </div>
+      <div class="Phone pe-note">Phone pe UI · Sample transaction data</div>
+    </header>
+
+    <main id="transactionList" class="transaction-list" aria-live="polite"></main>
+
+    <nav class="bottom-nav" aria-label="Bottom navigation">
+      <button class="nav-item" data-tab="Home"><span class="nav-icon">⌂</span><span>Home</span></button>
+      <button class="nav-item" data-tab="Search"><span class="nav-icon">⌕</span><span>Search</span></button>
+      <button class="scan" data-tab="Scan" aria-label="Scan QR"><span>▦</span></button>
+      <button class="nav-item" data-tab="Alerts"><span class="nav-icon">♧</span><span>Alerts</span></button>
+      <button class="nav-item active" data-tab="History"><span class="nav-icon">◷</span><span>History</span></button>
+    </nav>
+    <div class="gesture-bar"><span></span></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

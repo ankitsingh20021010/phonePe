@@ -1,16 +1,16 @@
 // Clearly labeled Phone pe data. Replace these objects with your own authorized data.
 const transactions = [
   // Phone pe ONLY: sample pair for the mock history UI.
-  { month: "October 2026", label: "Credit card bill paid", name: "XXXXXXXXXXXX5619", amount: 18000, type: "debit", time: "25 mins ago", icon: "▤", iconType: "card", bank: "∞" },
-  { month: "October 2026", label: "Received from", name: "TEEJAMAL GYANI LAL", amount: 18000, type: "credit", time: "26 mins ago", icon: "↙", bank: "∞" },
-  { month: "October 2026", label: "Paid to", name: "Ankit Bhaiya", amount: 1, type: "debit", time: "18 mins ago", icon: "💻", iconType: "avatar", bank: "∞" },
+  { month: "October 2026", label: "Credit card bill paid", name: "XXXXXXXXXXXX5619", amount: 18000, type: "debit", time: "4 hours ago", icon: "▤", iconType: "card", bank: "∞" },
+  { month: "October 2026", label: "Received from", name: "TEEJAMAL GYANI LAL", amount: 18000, type: "credit", time: "4 hours ago", icon: "↙", bank: "∞" },
+  { month: "October 2026", label: "Paid to", name: "Ankit Bhaiya", amount: 1, type: "debit", time: "4 hours ago", icon: "💻", iconType: "avatar", bank: "∞" },
   { month: "October 2026", label: "Credit card bill paid", name: "XXXXXXXXXXXX4779", amount: 14900, type: "debit", time: "1 hour ago", icon: "▤", iconType: "card", bank: "∞" },
   { month: "October 2026", label: "Received from", name: "LAXMAN RAMESHCHA...", amount: 14900, type: "credit", time: "1 hour ago", icon: "↙", bank: "∞" },
   { month: "October 2026", label: "Paid to", name: "Ankit Bhaiya", amount: 10400, type: "debit", time: "2 hours ago", icon: "💻", iconType: "avatar", bank: "●" },
-  { month: "October 2026", label: "Transfer to", name: "XXXXXXXXX0155", amount: 1, type: "debit", time: "2 hours ago", icon: "∞", bank: "●" },
-  { month: "October 2026", label: "Received from", name: "KRISHNA GUPTA", amount: 8400, type: "credit", time: "3 hours ago", icon: "↙", bank: "●" },
-  { month: "October 2026", label: "Received from", name: "KRISHNA GUPTA", amount: 2000, type: "credit", time: "3 hours ago", icon: "↙", bank: "●" },
-  { month: "October 2026", label: "Paid to", name: "Neeraj Kumar Shukla", amount: 40, type: "debit", time: "5 hours ago", icon: "↗", bank: "●" },
+  { month: "October 2026", label: "Transfer to", name: "XXXXXXXXX0155", amount: 1, type: "debit", time: "5 hours ago", icon: "∞", bank: "●" },
+  { month: "October 2026", label: "Received from", name: "KRISHNA GUPTA", amount: 8400, type: "credit", time: "6 hours ago", icon: "↙", bank: "●" },
+  { month: "October 2026", label: "Received from", name: "KRISHNA GUPTA", amount: 2000, type: "credit", time: "6 hours ago", icon: "↙", bank: "●" },
+  { month: "October 2026", label: "Paid to", name: "Neeraj Kumar Shukla", amount: 40, type: "debit", time: "8 hours ago", icon: "↗", bank: "●" },
   { month: "October 2026", label: "Transfer to", name: "XXXXXX8689", amount: 9, type: "debit", time: "1 day ago", icon: "●", bank: "K" },
   { month: "October 2026", label: "Paid to", name: "Airtel Payments Bank", amount: 10, type: "debit", time: "1 day ago", icon: "↗", bank: "●" }
 ];
